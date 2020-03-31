@@ -8,6 +8,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Slide from '@material-ui/core/Slide';
+import { makeStyles } from "@material-ui/core/styles";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -32,14 +33,29 @@ HideOnScroll.propTypes = {
   window: PropTypes.func,
 };
 
+const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+      margin: theme.spacing(6)
+    },
+    appBar: {
+      padding: theme.spacing(1),
+      textAlign: "center",
+      alignItems: "center",
+      color: "white",
+      backgroundColor: "#2c303a"
+    }
+  }));
 export default function HideAppBar(props) {
+    const classes = useStyles();
+
   return (
     <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar>
+        <AppBar className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6">Scroll to Hide App Bar</Typography>
+            <Typography variant="h6"><img class="wp-image-16860 aligncenter" src="https://trialx.com/wp-content/uploads/2016/02/Trialx_color_logo-1024x428_small.png" alt="Trialx_color_logo" width="126" height="53"></img></Typography>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

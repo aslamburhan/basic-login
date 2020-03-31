@@ -6,17 +6,17 @@ import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import { Redirect } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import { fetchUserData } from "./actions";
 import Button from "@material-ui/core/Button";
+import SimpleCard from "../../common/card";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "80%",
-    margin: theme.spacing(2),
-    backgroundColor: theme.palette.background.paper
+    width: "100%",
+    marginTop: theme.spacing(3),
   },
   inline: {
     display: "inline"
@@ -63,9 +63,20 @@ function Dashboard(props) {
       );
     };
     return (
-      <Grid container direction="column" justify="center" alignItems="center">
-        <List className={classes.root}>{mapDataList()}</List>
-        <Button
+        <Grid className={classes.root} container direction="row" spacing={1} justify="center" alignItems="center">
+    {  [{title:"Daily Symptoms Log", frequency:"Daily",url:"surveys/generalsurvey"},{title:"Onboarding Profile Survey", frequency:"Onboarding",url:"surveys/onboardingsurvey"}].map((option)=>{
+        return( <Grid >
+        {/* <List className={classes.root}>{mapDataList()}</List> */}
+      
+     <SimpleCard url={option.url} title={option.title} frequency={option.frequency} status={"Not Filled"}/>
+    
+
+
+
+     </Grid>)})
+     
+  }
+    <Button
           variant="contained"
           color="secondary"
           onClick={() => {

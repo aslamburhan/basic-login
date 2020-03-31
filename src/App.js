@@ -8,12 +8,23 @@ import configureStore from "./configureStore";
 import LogoutPage from "./components/logout";
 import Survey from "./components/survey"
 import HideAppBar from "./components/navbar"
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { CssBaseline } from "@material-ui/core";
+const theme = createMuiTheme({
+    palette: {
+      type: 'dark',
+    },
+});
 const store = configureStore();
 
 function App() {
   return (
     <div className="App">
+<CssBaseline/>
       <Provider store={store}>
+      <ThemeProvider theme={theme}>
+
       <HideAppBar/>
         <Router>
           <Switch>
@@ -26,12 +37,15 @@ function App() {
             <Route path="/logout">
               <LogoutPage />
             </Route>
-            <Route path="/surveys">
+            <Route path="/surveys/:type">
               <Survey/>
             </Route>
           </Switch>
         </Router>
+        </ThemeProvider>
+
       </Provider>
+
     </div>
   );
 }

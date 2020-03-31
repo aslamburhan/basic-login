@@ -1,7 +1,78 @@
 //JSON - Login
+const axios = require('axios');
+var $ = require("jquery");
+
+export function POST(url,data){
+
+
+
+
+
+
+  return $.ajax({
+    url : `${url}`,
+    type: 'POST',
+    data : data,
+    crossDomain: true,
+
+    dataType: "json",
+    contentType: "application/json",
+    headers:{"X-STUDY-TOKEN":"98b5a39c1a0a283b44db8659dbe6591b32481f568b8d0527d6652adfe1cddd7a",
+    "X-PARTICIPANT-TOKEN":"3fe1ab9a3a277383368af8ec6f28baec70cc357b66181c1e09d10cef903dc152"}
+
+}).then(response => {
+        return response
+
+}).catch(err => {
+        return null
+}
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  console.log(data,"gggggggggggggg")
+  var resp = axios({
+    method: 'post',
+    url: url,
+    data: data,
+    headers: {
+      "Content-Type":"application/json",
+      "X-STUDY-TOKEN":"98b5a39c1a0a283b44db8659dbe6591b32481f568b8d0527d6652adfe1cddd7a",
+    "X-PARTICIPANT-TOKEN":"3fe1ab9a3a277383368af8ec6f28baec70cc357b66181c1e09d10cef903dc152"}
+
+  });
+var response = fetch(url, {
+  method: 'post',
+  headers: {
+    "Content-type": "application/json",
+    "X-STUDY-TOKEN":"98b5a39c1a0a283b44db8659dbe6591b32481f568b8d0527d6652adfe1cddd7a",
+    "X-PARTICIPANT-TOKEN":"3fe1ab9a3a277383368af8ec6f28baec70cc357b66181c1e09d10cef903dc152"
+  },
+  body: data,
+})
+.then(function (data) {
+  console.log('Request succeeded with JSON response', data);
+})
+.catch(function (error) {
+  console.log('Request failed', error);
+});
+return response
+}
 export function loginApi(data) {
   var response = "";
-  if (data.email == "hruday@gmail.com" && data.password == "hruday123") {
+  if (data.email == "burhan@trialx.com" && data.password == "123") {
     response = {
       status: "success",
       loggedInUser: "hruday@gmail.com"
